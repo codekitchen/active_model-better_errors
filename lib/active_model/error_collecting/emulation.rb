@@ -31,7 +31,7 @@ module ActiveModel
 
       def add_on_empty(attributes, options = {})
         [attributes].flatten.each do |attribute|
-          value = @base.send(:read_attribute_for_validation, attribute)
+          value = @base.send(:read_attribute, attribute)
           is_empty = value.respond_to?(:empty?) ? value.empty? : false
           add(attribute, :empty, options) if value.nil? || is_empty
         end
@@ -39,7 +39,7 @@ module ActiveModel
 
       def add_on_blank(attributes, options = {})
         [attributes].flatten.each do |attribute|
-          value = @base.send(:read_attribute_for_validation, attribute)
+          value = @base.send(:read_attribute, attribute)
           add(attribute, :blank, options) if value.blank?
         end
       end

@@ -1,7 +1,6 @@
-source :rubygems
+source 'https://rubygems.org'
 
-gem "activemodel", "~> 3.0"
-
+gem "activerecord", "~> 2.3.11"
 
 group :development, :test do
   gem "rake"
@@ -14,4 +13,6 @@ group :development, :test do
   gem "simplecov"
   gem 'bcrypt-ruby', '~> 3.0.0'
   gem 'mocha', '>= 0.12.1'
+  gem 'sqlite3'
+  gem 'debugger'
 end

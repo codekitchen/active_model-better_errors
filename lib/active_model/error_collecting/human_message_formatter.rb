@@ -23,7 +23,7 @@ module ActiveModel
 
         options = {
           :default => keys,
-          :model => base.class.model_name.human,
+          :model => base.class.human_name,
           :attribute => base.class.human_attribute_name(attribute),
           :value => value
         }.merge(self.options)
@@ -35,7 +35,7 @@ module ActiveModel
 
       def value
         return if attribute == :base
-        base.send :read_attribute_for_validation, attribute
+        base.send :read_attribute, attribute
       end
 
       def ancestor_keys
@@ -59,7 +59,9 @@ module ActiveModel
         end
 
         keys << :"errors.attributes.#{attribute}.#{type}"
+        keys << :"activerecord.errors.attributes.#{attribute}.#{type}"
         keys << :"errors.messages.#{type}"
+        keys << :"activerecord.errors.messages.#{type}"
 
         keys.compact!
         keys.flatten!
