@@ -4,14 +4,14 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = "active_model-better_errors"
-  s.version = "1.6.3"
+  s.name = "instructure-active_model-better_errors"
+  s.version = "1.6.3.rails2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Aaron Qian", "Byron Anderson"]
-  s.date = "2013-01-23"
+  s.authors = ["Aaron Qian", "Byron Anderson", "Brian Palmer"]
+  s.date = "2013-11-08"
   s.description = "ActiveModel::Errors class is not designed for API consumption. This gem allows for that while keeping compatibility with existing rails API."
-  s.email = ["aq1018@gmail.com", "byronanderson32@gmail.com"]
+  s.email = ["aq1018@gmail.com", "byronanderson32@gmail.com", "brianp@instructure.com"]
   s.extra_rdoc_files = [
     "LICENSE.txt",
     "README.md"
@@ -62,7 +62,7 @@ Gem::Specification.new do |s|
     "spec/support/models.rb",
     "test/integration.rb"
   ]
-  s.homepage = "http://github.com/aq1018/active_model-better_errors"
+  s.homepage = "http://github.com/codekitchen/active_model-better_errors"
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = "1.8.24"
