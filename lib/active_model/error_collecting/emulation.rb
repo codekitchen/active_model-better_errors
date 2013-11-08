@@ -30,21 +30,23 @@ module ActiveModel
       end
 
       def add_on_empty(attributes, options = {})
-        [attributes].flatten.each do |attribute|
-          value = @base.send(:read_attribute, attribute)
+        [attributes].flatten.each do |attr|
+          value = @base.respond_to?(attr.to_s) ? @base.send(attr.to_s) : @base[attr.to_s]
           is_empty = value.respond_to?(:empty?) ? value.empty? : false
-          add(attribute, :empty, options) if value.nil? || is_empty
+          add(attr, :empty, options) if value.nil? || is_empty
         end
       end
 
       def add_on_blank(attributes, options = {})
-        [attributes].flatten.each do |attribute|
-          value = @base.send(:read_attribute, attribute)
-          add(attribute, :blank, options) if value.blank?
+        [attributes].flatten.each do |attr|
+          value = @base.respond_to?(attr.to_s) ? @base.send(attr.to_s) : @base[attr.to_s]
+          add(attr, :blank, options) if value.blank?
         end
       end
 
-      def add(attribute, message=nil, options = {})
+      def add(attribute, message=nil, options = nil)
+        options ||= {}
+        options = { message: options } unless options.is_a?(Hash)
         if options[:strict]
           error   = ErrorMessage.build(attribute, message, options)
           message = HumanMessageFormatter.new(@base, error).format_message
