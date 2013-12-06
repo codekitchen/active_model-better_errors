@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "instructure-active_model-better_errors"
-  s.version = "1.6.3.rails2.4"
+  s.version = "1.6.3.rails2.5"
 
   s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
   s.authors = ["Aaron Qian", "Byron Anderson", "Brian Palmer"]
-  s.date = "2013-12-02"
+  s.date = "2013-12-03"
   s.description = "ActiveModel::Errors class is not designed for API consumption. This gem allows for that while keeping compatibility with existing rails API."
   s.email = ["aq1018@gmail.com", "byronanderson32@gmail.com", "brianp@instructure.com"]
   s.extra_rdoc_files = [
@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
     "README.md",
     "Rakefile",
     "VERSION",
-    "active_model-better_errors.gemspec",
+    "instructure-active_model-better_errors.gemspec",
     "lib/active_model/better_errors.rb",
     "lib/active_model/error_collecting.rb",
     "lib/active_model/error_collecting/array_reporter.rb",
