@@ -1,18 +1,16 @@
+# coding: utf-8
+
 source 'https://rubygems.org'
 
 gem "activerecord", "~> 2.3.11"
 
+gemspec
+
 group :development, :test do
-  gem "rake"
-  gem "rspec", "~> 2.12.0"
-  gem "pry"
-  gem "yard"
-  gem "rdoc"
-  gem "bundler"
-  gem "jeweler"
-  gem "simplecov"
-  gem 'bcrypt-ruby', '~> 3.0.0'
-  gem 'mocha', '>= 0.12.1'
+  gem 'devtools', git: 'https://github.com/rom-rb/devtools.git'
+  gem 'gem-release'
   gem 'sqlite3'
-  gem 'debugger'
 end
+
+# Added by devtools
+eval_gemfile 'Gemfile.devtools'

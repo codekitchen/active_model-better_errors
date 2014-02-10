@@ -1,13 +1,24 @@
-$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
-$LOAD_PATH.unshift(File.dirname(__FILE__))
-require 'rspec'
-require 'pry'
+# encoding: utf-8
 
-require 'active_model/better_errors'
+# SimpleCov MUST be started before require 'rom-relation'
+#
+if ENV['COVERAGE'] == 'true'
+  require 'simplecov'
+  require 'coveralls'
 
-# Requires supporting files with custom matchers and macros, etc,
-# in ./support/ and its subdirectories.
-Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
+  SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
+    SimpleCov::Formatter::HTMLFormatter,
+    Coveralls::SimpleCov::Formatter
+  ]
+
+  SimpleCov.start do
+    command_name 'spec:unit'
+
+    add_filter 'config'
+    add_filter 'lib/rom/support'
+    add_filter 'spec'
+  end
+end
 
 def migrate_test_db
   ActiveRecord::Base.connection.create_table(:users) do |t|
@@ -29,9 +40,5 @@ RSpec.configure do |config|
   end
 end
 
-class String
-  def ==(other)
-    return super other.to_s if other.is_a? ActiveModel::ErrorCollecting::ErrorMessage
-    super
-  end
-end
+require 'active_model/better_errors'
+require 'devtools/spec_helper'
